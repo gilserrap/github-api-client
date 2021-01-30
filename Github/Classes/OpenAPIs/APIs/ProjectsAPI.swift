@@ -952,44 +952,6 @@ open class ProjectsAPI {
     }
 
     /**
-     Move a project column
-     
-     - parameter columnId: (path) column_id parameter 
-     - parameter inlineObject67: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func projectsMoveColumn(columnId: Int, inlineObject67: InlineObject67? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Any?,_ error: Error?) -> Void)) {
-        projectsMoveColumnWithRequestBuilder(columnId: columnId, inlineObject67: inlineObject67).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Remove user as a collaborator
-     
-     - parameter projectId: (path)  
-     - parameter username: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func projectsRemoveCollaborator(projectId: Int, username: String, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        projectsRemoveCollaboratorWithRequestBuilder(projectId: projectId, username: username).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
      Remove user as a collaborator
      - DELETE /projects/{project_id}/collaborators/{username}
      - Removes a collaborator from an organization project. You must be an organization owner or a project `admin` to remove a collaborator.
