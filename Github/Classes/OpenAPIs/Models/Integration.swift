@@ -76,7 +76,6 @@ public struct Integration: Codable {
         try container.encodeIfPresent(clientSecret, forKey: "client_secret")
         try container.encodeIfPresent(webhookSecret, forKey: "webhook_secret")
         try container.encodeIfPresent(pem, forKey: "pem")
-        try container.encodeMap(additionalProperties)
     }
 
     // Decodable protocol methods

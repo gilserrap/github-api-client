@@ -61,7 +61,6 @@ public struct Installation: Codable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case id
-        case account
         case repositorySelection = "repository_selection"
         case accessTokensUrl = "access_tokens_url"
         case repositoriesUrl = "repositories_url"
