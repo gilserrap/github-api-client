@@ -4500,7 +4500,7 @@ open class ReposAPI {
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
             "sha": sha?.encodeToJSON(), 
-            "path": path?.encodeToJSON(), 
+            "path": path.encodeToJSON(), 
             "author": author?.encodeToJSON(), 
             "since": since?.encodeToJSON(), 
             "until": until?.encodeToJSON(), 
