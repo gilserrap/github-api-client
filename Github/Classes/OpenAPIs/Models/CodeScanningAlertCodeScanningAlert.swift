@@ -18,7 +18,7 @@ public struct CodeScanningAlertCodeScanningAlert: Codable {
     public var url: String
     /** The GitHub URL of the alert resource. */
     public var htmlUrl: String
-    public var instances: [Any]?
+    public var instances: [String]?
     public var state: CodeScanningAlertState
     public var dismissedBy: SimpleUser?
     /** The time that the alert was dismissed in ISO 8601 format: &#x60;YYYY-MM-DDTHH:MM:SSZ&#x60;. */
@@ -27,7 +27,7 @@ public struct CodeScanningAlertCodeScanningAlert: Codable {
     public var rule: CodeScanningAlertRule
     public var tool: CodeScanningAnalysisTool
 
-    public init(number: Int, createdAt: Date, url: String, htmlUrl: String, instances: [Any]?, state: CodeScanningAlertState, dismissedBy: SimpleUser?, dismissedAt: Date?, dismissedReason: CodeScanningAlertDismissedReason?, rule: CodeScanningAlertRule, tool: CodeScanningAnalysisTool) {
+    public init(number: Int, createdAt: Date, url: String, htmlUrl: String, instances: [String]?, state: CodeScanningAlertState, dismissedBy: SimpleUser?, dismissedAt: Date?, dismissedReason: CodeScanningAlertDismissedReason?, rule: CodeScanningAlertRule, tool: CodeScanningAnalysisTool) {
         self.number = number
         self.createdAt = createdAt
         self.url = url

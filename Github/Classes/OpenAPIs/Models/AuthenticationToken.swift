@@ -18,14 +18,14 @@ public struct AuthenticationToken: Codable {
     public var token: String
     /** The time this token expires */
     public var expiresAt: Date
-    public var permissions: Any?
+    public var permissions: String?
     /** The repositories this token has access to */
     public var repositories: [Repository]?
     public var singleFile: String?
     /** Describe whether all repositories have been selected or there&#39;s a selection involved */
     public var repositorySelection: RepositorySelection?
 
-    public init(token: String, expiresAt: Date, permissions: Any? = nil, repositories: [Repository]? = nil, singleFile: String? = nil, repositorySelection: RepositorySelection? = nil) {
+    public init(token: String, expiresAt: Date, permissions: String? = nil, repositories: [Repository]? = nil, singleFile: String? = nil, repositorySelection: RepositorySelection? = nil) {
         self.token = token
         self.expiresAt = expiresAt
         self.permissions = permissions

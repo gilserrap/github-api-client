@@ -21,9 +21,9 @@ public struct CommitSearchResultItem: Codable {
     public var repository: MinimalRepository
     public var score: Int
     public var nodeId: String
-    public var textMatches: [Any]?
+    public var textMatches: [String]?
 
-    public init(url: String, sha: String, htmlUrl: String, commentsUrl: String, commit: CommitSearchResultItemCommit, author: SimpleUser?, committer: GitUser?, parents: [FileCommitCommitParents], repository: MinimalRepository, score: Int, nodeId: String, textMatches: [Any]? = nil) {
+    public init(url: String, sha: String, htmlUrl: String, commentsUrl: String, commit: CommitSearchResultItemCommit, author: SimpleUser?, committer: GitUser?, parents: [FileCommitCommitParents], repository: MinimalRepository, score: Int, nodeId: String, textMatches: [String]? = nil) {
         self.url = url
         self.sha = sha
         self.htmlUrl = htmlUrl

@@ -11,8 +11,8 @@ import Foundation
 public struct InlineObject116: Codable {
 
     public enum Content: String, Codable, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"

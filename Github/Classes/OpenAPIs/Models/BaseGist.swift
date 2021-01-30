@@ -28,10 +28,10 @@ public struct BaseGist: Codable {
     public var commentsUrl: String
     public var owner: SimpleUser?
     public var truncated: Bool?
-    public var forks: [Any]?
-    public var history: [Any]?
+    public var forks: [String]?
+    public var history: [String]?
 
-    public init(url: String, forksUrl: String, commitsUrl: String, id: String, nodeId: String, gitPullUrl: String, gitPushUrl: String, htmlUrl: String, files: [String:BaseGistFiles], _public: Bool, createdAt: Date, updatedAt: Date, description: String?, comments: Int, user: SimpleUser?, commentsUrl: String, owner: SimpleUser? = nil, truncated: Bool? = nil, forks: [Any]? = nil, history: [Any]? = nil) {
+    public init(url: String, forksUrl: String, commitsUrl: String, id: String, nodeId: String, gitPullUrl: String, gitPushUrl: String, htmlUrl: String, files: [String:BaseGistFiles], _public: Bool, createdAt: Date, updatedAt: Date, description: String?, comments: Int, user: SimpleUser?, commentsUrl: String, owner: SimpleUser? = nil, truncated: Bool? = nil, forks: [String]? = nil, history: [String]? = nil) {
         self.url = url
         self.forksUrl = forksUrl
         self.commitsUrl = commitsUrl

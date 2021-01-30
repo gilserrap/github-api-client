@@ -10,46 +10,6 @@ import Foundation
 
 
 open class UsersAPI {
-    /**
-     Add an email address for the authenticated user
-     
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func usersAddEmailForAuthenticated(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: [Email]?,_ error: Error?) -> Void)) {
-        usersAddEmailForAuthenticatedWithRequestBuilder(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Add an email address for the authenticated user
-     - POST /user/emails
-     - This endpoint is accessible with the `user` scope.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/users#add-an-email-address-for-the-authenticated-user
-}
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - returns: RequestBuilder<[Email]> 
-     */
-    open class func usersAddEmailForAuthenticatedWithRequestBuilder(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<[Email]> {
-        let path = "/user/emails"
-        let URLString = GithubAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: UNKNOWN_BASE_TYPE)
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<[Email]>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
 
     /**
      Check if a user follows another user
@@ -225,47 +185,6 @@ open class UsersAPI {
     }
 
     /**
-     Delete an email address for the authenticated user
-     
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func usersDeleteEmailForAuthenticated(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        usersDeleteEmailForAuthenticatedWithRequestBuilder(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Delete an email address for the authenticated user
-     - DELETE /user/emails
-     - This endpoint is accessible with the `user` scope.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/users#delete-an-email-address-for-the-authenticated-user
-}
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - returns: RequestBuilder<Void> 
-     */
-    open class func usersDeleteEmailForAuthenticatedWithRequestBuilder(UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<Void> {
-        let path = "/user/emails"
-        let URLString = GithubAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: UNKNOWN_BASE_TYPE)
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<Void>.Type = GithubAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-
-    /**
      Delete a GPG key for the authenticated user
      
      - parameter gpgKeyId: (path) gpg_key_id parameter 
@@ -395,89 +314,6 @@ open class UsersAPI {
         let requestBuilder: RequestBuilder<Void>.Type = GithubAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
-     Get the authenticated user
-     
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func usersGetAuthenticated(apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: OneOfprivateUserpublicUser?,_ error: Error?) -> Void)) {
-        usersGetAuthenticatedWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Get the authenticated user
-     - GET /user
-     - If the authenticated user is authenticated through basic authentication or OAuth with the `user` scope, then the response lists public and private profile information.  If the authenticated user is authenticated through OAuth without the `user` scope, then the response lists only public profile information.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/v3/users/#get-the-authenticated-user
-}
-     - returns: RequestBuilder<OneOfprivateUserpublicUser> 
-     */
-    open class func usersGetAuthenticatedWithRequestBuilder() -> RequestBuilder<OneOfprivateUserpublicUser> {
-        let path = "/user"
-        let URLString = GithubAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<OneOfprivateUserpublicUser>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
-     Get a user
-     
-     - parameter username: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func usersGetByUsername(username: String, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: OneOfprivateUserpublicUser?,_ error: Error?) -> Void)) {
-        usersGetByUsernameWithRequestBuilder(username: username).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Get a user
-     - GET /users/{username}
-     - Provides publicly available information about someone with a GitHub account.  GitHub Apps with the `Plan` user permission can use this endpoint to retrieve information about a user's GitHub Enterprise Server plan. The GitHub App must be authenticated as a user. See \"[Identifying and authorizing users for GitHub Apps](https://docs.github.com/enterprise-server@3.0/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/)\" for details about authentication. For an example response, see 'Response with GitHub Enterprise Server plan information' below\"  The `email` key in the following response is the publicly visible email address from your GitHub Enterprise Server [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be “public” which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub Enterprise Server. For more information, see [Authentication](https://docs.github.com/enterprise-server@3.0/rest/overview/resources-in-the-rest-api#authentication).  The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see \"[Emails API](https://docs.github.com/enterprise-server@3.0/rest/reference/users#emails)\".
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/v3/users/#get-a-user
-}
-     - parameter username: (path)  
-     - returns: RequestBuilder<OneOfprivateUserpublicUser> 
-     */
-    open class func usersGetByUsernameWithRequestBuilder(username: String) -> RequestBuilder<OneOfprivateUserpublicUser> {
-        var path = "/users/{username}"
-        let usernamePreEscape = "\(APIHelper.mapValueToPathItem(username))"
-        let usernamePostEscape = usernamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{username}", with: usernamePostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<OneOfprivateUserpublicUser>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
     /**

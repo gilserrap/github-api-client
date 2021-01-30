@@ -14,9 +14,9 @@ public struct InlineObject31: Codable {
     public var description: String?
     /** Names and content for the files that make up the gist */
     public var files: [String:GistsFiles]
-    public var _public: OneOfbooleanstring?
+    public var _public: String?
 
-    public init(description: String? = nil, files: [String:GistsFiles], _public: OneOfbooleanstring? = nil) {
+    public init(description: String? = nil, files: [String:GistsFiles], _public: String? = nil) {
         self.description = description
         self.files = files
         self._public = _public

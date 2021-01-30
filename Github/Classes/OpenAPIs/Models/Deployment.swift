@@ -19,7 +19,7 @@ public struct Deployment: Codable {
     public var ref: String
     /** Parameter to specify a task to execute */
     public var task: String
-    public var payload: Any
+    public var payload: String
     public var originalEnvironment: String?
     /** Name for the target deployment environment. */
     public var environment: String
@@ -35,7 +35,7 @@ public struct Deployment: Codable {
     public var productionEnvironment: Bool?
     public var performedViaGithubApp: Integration?
 
-    public init(url: String, id: Int, nodeId: String, sha: String, ref: String, task: String, payload: Any, originalEnvironment: String? = nil, environment: String, description: String?, creator: SimpleUser?, createdAt: Date, updatedAt: Date, statusesUrl: String, repositoryUrl: String, transientEnvironment: Bool? = nil, productionEnvironment: Bool? = nil, performedViaGithubApp: Integration? = nil) {
+    public init(url: String, id: Int, nodeId: String, sha: String, ref: String, task: String, payload: String, originalEnvironment: String? = nil, environment: String, description: String?, creator: SimpleUser?, createdAt: Date, updatedAt: Date, statusesUrl: String, repositoryUrl: String, transientEnvironment: Bool? = nil, productionEnvironment: Bool? = nil, performedViaGithubApp: Integration? = nil) {
         self.url = url
         self.id = id
         self.nodeId = nodeId

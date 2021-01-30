@@ -22,9 +22,9 @@ public struct CodeSearchResultItem: Codable {
     public var language: String?
     public var lastModifiedAt: Date?
     public var lineNumbers: [String]?
-    public var textMatches: [Any]?
+    public var textMatches: [String]?
 
-    public init(name: String, path: String, sha: String, url: String, gitUrl: String, htmlUrl: String, repository: MinimalRepository, score: Int, fileSize: Int? = nil, language: String? = nil, lastModifiedAt: Date? = nil, lineNumbers: [String]? = nil, textMatches: [Any]? = nil) {
+    public init(name: String, path: String, sha: String, url: String, gitUrl: String, htmlUrl: String, repository: MinimalRepository, score: Int, fileSize: Int? = nil, language: String? = nil, lastModifiedAt: Date? = nil, lineNumbers: [String]? = nil, textMatches: [String]? = nil) {
         self.name = name
         self.path = path
         self.sha = sha

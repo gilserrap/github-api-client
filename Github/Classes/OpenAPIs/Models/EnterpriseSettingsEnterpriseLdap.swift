@@ -12,13 +12,13 @@ public struct EnterpriseSettingsEnterpriseLdap: Codable {
 
     public var host: String?
     public var port: Int?
-    public var base: [Any]?
+    public var base: [String]?
     public var uid: String?
     public var bindDn: String?
     public var password: String?
     public var method: String?
     public var searchStrategy: String?
-    public var userGroups: [Any]?
+    public var userGroups: [String]?
     public var adminGroup: String?
     public var virtualAttributeEnabled: Bool?
     public var recursiveGroupSearch: Bool?
@@ -31,7 +31,7 @@ public struct EnterpriseSettingsEnterpriseLdap: Codable {
     public var reconciliation: EnterpriseSettingsEnterpriseLdapReconciliation?
     public var profile: EnterpriseSettingsEnterpriseLdapProfile?
 
-    public init(host: String? = nil, port: Int? = nil, base: [Any]? = nil, uid: String? = nil, bindDn: String? = nil, password: String? = nil, method: String? = nil, searchStrategy: String? = nil, userGroups: [Any]? = nil, adminGroup: String? = nil, virtualAttributeEnabled: Bool? = nil, recursiveGroupSearch: Bool? = nil, posixSupport: Bool? = nil, userSyncEmails: Bool? = nil, userSyncKeys: Bool? = nil, userSyncInterval: Int? = nil, teamSyncInterval: Int? = nil, syncEnabled: Bool? = nil, reconciliation: EnterpriseSettingsEnterpriseLdapReconciliation? = nil, profile: EnterpriseSettingsEnterpriseLdapProfile? = nil) {
+    public init(host: String? = nil, port: Int? = nil, base: [String]? = nil, uid: String? = nil, bindDn: String? = nil, password: String? = nil, method: String? = nil, searchStrategy: String? = nil, userGroups: [String]? = nil, adminGroup: String? = nil, virtualAttributeEnabled: Bool? = nil, recursiveGroupSearch: Bool? = nil, posixSupport: Bool? = nil, userSyncEmails: Bool? = nil, userSyncKeys: Bool? = nil, userSyncInterval: Int? = nil, teamSyncInterval: Int? = nil, syncEnabled: Bool? = nil, reconciliation: EnterpriseSettingsEnterpriseLdapReconciliation? = nil, profile: EnterpriseSettingsEnterpriseLdapProfile? = nil) {
         self.host = host
         self.port = port
         self.base = base

@@ -14,8 +14,8 @@ public struct GpgKeySubkeys: Codable {
     public var primaryKeyId: Int?
     public var keyId: String?
     public var publicKey: String?
-    public var emails: [Any]?
-    public var subkeys: [Any]?
+    public var emails: [String]?
+    public var subkeys: [String]?
     public var canSign: Bool?
     public var canEncryptComms: Bool?
     public var canEncryptStorage: Bool?
@@ -24,7 +24,7 @@ public struct GpgKeySubkeys: Codable {
     public var expiresAt: String?
     public var rawKey: String?
 
-    public init(id: Int? = nil, primaryKeyId: Int? = nil, keyId: String? = nil, publicKey: String? = nil, emails: [Any]? = nil, subkeys: [Any]? = nil, canSign: Bool? = nil, canEncryptComms: Bool? = nil, canEncryptStorage: Bool? = nil, canCertify: Bool? = nil, createdAt: String? = nil, expiresAt: String? = nil, rawKey: String? = nil) {
+    public init(id: Int? = nil, primaryKeyId: Int? = nil, keyId: String? = nil, publicKey: String? = nil, emails: [String]? = nil, subkeys: [String]? = nil, canSign: Bool? = nil, canEncryptComms: Bool? = nil, canEncryptStorage: Bool? = nil, canCertify: Bool? = nil, createdAt: String? = nil, expiresAt: String? = nil, rawKey: String? = nil) {
         self.id = id
         self.primaryKeyId = primaryKeyId
         self.keyId = keyId

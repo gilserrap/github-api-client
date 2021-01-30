@@ -14,9 +14,9 @@ public struct InlineObject132: Codable {
     public var cname: String?
     /** Configures access controls for the GitHub Pages site. If public is set to &#x60;true&#x60;, the site is accessible to anyone on the internet. If set to &#x60;false&#x60;, the site will only be accessible to users who have at least &#x60;read&#x60; access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to &#x60;internal&#x60; visibility. This feature is only available to repositories in an organization on an Enterprise plan. */
     public var _public: Bool?
-    public var source: AnyOfstringobject
+    public var source: String
 
-    public init(cname: String? = nil, _public: Bool? = nil, source: AnyOfstringobject) {
+    public init(cname: String? = nil, _public: Bool? = nil, source: String) {
         self.cname = cname
         self._public = _public
         self.source = source
