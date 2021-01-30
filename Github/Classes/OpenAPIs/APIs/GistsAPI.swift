@@ -869,52 +869,6 @@ open class GistsAPI {
     }
 
     /**
-     Update a gist
-     
-     - parameter gistId: (path) gist_id parameter 
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func gistsUpdate(gistId: String, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: GistSimple?,_ error: Error?) -> Void)) {
-        gistsUpdateWithRequestBuilder(gistId: gistId, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Update a gist
-     - PATCH /gists/{gist_id}
-     - Allows you to update or delete a gist file and rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/v3/gists/#update-a-gist
-}
-     - parameter gistId: (path) gist_id parameter 
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - returns: RequestBuilder<GistSimple> 
-     */
-    open class func gistsUpdateWithRequestBuilder(gistId: String, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<GistSimple> {
-        var path = "/gists/{gist_id}"
-        let gistIdPreEscape = "\(APIHelper.mapValueToPathItem(gistId))"
-        let gistIdPostEscape = gistIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{gist_id}", with: gistIdPostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: UNKNOWN_BASE_TYPE)
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<GistSimple>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-
-    /**
      Update a gist comment
      
      - parameter gistId: (path) gist_id parameter 

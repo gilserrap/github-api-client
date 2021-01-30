@@ -159,7 +159,7 @@ open class SearchAPI {
     public enum Sort_searchIssuesAndPullRequests: String, CaseIterable {
         case comments = "comments"
         case reactions = "reactions"
-        case reactions+1 = "reactions-+1"
+        case reactionsPlusOne = "reactions-+1"
         case reactions1 = "reactions--1"
         case reactionsSmile = "reactions-smile"
         case reactionsThinkingFace = "reactions-thinking_face"

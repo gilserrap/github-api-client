@@ -45,7 +45,6 @@ public struct InlineObject100: Codable {
         case task
         case autoMerge = "auto_merge"
         case requiredContexts = "required_contexts"
-        case payload
         case environment
         case description
         case transientEnvironment = "transient_environment"

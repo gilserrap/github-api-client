@@ -2695,55 +2695,6 @@ open class ReposAPI {
     }
 
     /**
-     Get the weekly commit activity
-     
-     - parameter owner: (path)  
-     - parameter repo: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func reposGetCodeFrequencyStats(owner: String, repo: String, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: [Array]?,_ error: Error?) -> Void)) {
-        reposGetCodeFrequencyStatsWithRequestBuilder(owner: owner, repo: repo).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Get the weekly commit activity
-     - GET /repos/{owner}/{repo}/stats/code_frequency
-     - Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/repos#get-the-weekly-commit-activity
-}
-     - parameter owner: (path)  
-     - parameter repo: (path)  
-     - returns: RequestBuilder<[Array]> 
-     */
-    open class func reposGetCodeFrequencyStatsWithRequestBuilder(owner: String, repo: String) -> RequestBuilder<[Array]> {
-        var path = "/repos/{owner}/{repo}/stats/code_frequency"
-        let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
-        let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{owner}", with: ownerPostEscape, options: .literal, range: nil)
-        let repoPreEscape = "\(APIHelper.mapValueToPathItem(repo))"
-        let repoPostEscape = repoPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{repo}", with: repoPostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<[Array]>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
      Get repository permissions for a user
      
      - parameter owner: (path)  
@@ -3631,55 +3582,6 @@ open class ReposAPI {
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<ProtectedBranchPullRequestReview>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
-     Get the hourly commit count for each day
-     
-     - parameter owner: (path)  
-     - parameter repo: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func reposGetPunchCardStats(owner: String, repo: String, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: [Array]?,_ error: Error?) -> Void)) {
-        reposGetPunchCardStatsWithRequestBuilder(owner: owner, repo: repo).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Get the hourly commit count for each day
-     - GET /repos/{owner}/{repo}/stats/punch_card
-     - Each array contains the day number, hour number, and number of commits:  *   `0-6`: Sunday - Saturday *   `0-23`: Hour of day *   Number of commits  For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/repos#get-the-hourly-commit-count-for-each-day
-}
-     - parameter owner: (path)  
-     - parameter repo: (path)  
-     - returns: RequestBuilder<[Array]> 
-     */
-    open class func reposGetPunchCardStatsWithRequestBuilder(owner: String, repo: String) -> RequestBuilder<[Array]> {
-        var path = "/repos/{owner}/{repo}/stats/punch_card"
-        let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
-        let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{owner}", with: ownerPostEscape, options: .literal, range: nil)
-        let repoPreEscape = "\(APIHelper.mapValueToPathItem(repo))"
-        let repoPostEscape = repoPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{repo}", with: repoPostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<[Array]>.Type = GithubAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

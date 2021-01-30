@@ -62,52 +62,6 @@ open class ProjectsAPI {
     }
 
     /**
-     Create a project card
-     
-     - parameter columnId: (path) column_id parameter 
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func projectsCreateCard(columnId: Int, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: ProjectCard?,_ error: Error?) -> Void)) {
-        projectsCreateCardWithRequestBuilder(columnId: columnId, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Create a project card
-     - POST /projects/columns/{column_id}/cards
-     - **Note**: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request. For this reason, \"Issues\" endpoints may return both issues and pull requests in the response. You can identify pull requests by the `pull_request` key.  Be aware that the `id` of a pull request returned from \"Issues\" endpoints will be an _issue id_. To find out the pull request id, use the \"[List pull requests](https://docs.github.com/enterprise-server@3.0/rest/reference/pulls#list-pull-requests)\" endpoint.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/projects#create-a-project-card
-}
-     - parameter columnId: (path) column_id parameter 
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - returns: RequestBuilder<ProjectCard> 
-     */
-    open class func projectsCreateCardWithRequestBuilder(columnId: Int, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<ProjectCard> {
-        var path = "/projects/columns/{column_id}/cards"
-        let columnIdPreEscape = "\(APIHelper.mapValueToPathItem(columnId))"
-        let columnIdPostEscape = columnIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{column_id}", with: columnIdPostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: UNKNOWN_BASE_TYPE)
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<ProjectCard>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-
-    /**
      Create a project column
      
      - parameter projectId: (path)  
