@@ -22,9 +22,8 @@ public struct LdapMappingTeam: Codable {
     public var permission: String?
     public var membersUrl: String?
     public var repositoriesUrl: String?
-    public var parent: Any?
 
-    public init(ldapDn: String? = nil, id: Int? = nil, nodeId: String? = nil, url: String? = nil, htmlUrl: String? = nil, name: String? = nil, slug: String? = nil, description: String? = nil, privacy: String? = nil, permission: String? = nil, membersUrl: String? = nil, repositoriesUrl: String? = nil, parent: Any? = nil) {
+    public init(ldapDn: String? = nil, id: Int? = nil, nodeId: String? = nil, url: String? = nil, htmlUrl: String? = nil, name: String? = nil, slug: String? = nil, description: String? = nil, privacy: String? = nil, permission: String? = nil, membersUrl: String? = nil, repositoriesUrl: String? = nil) {
         self.ldapDn = ldapDn
         self.id = id
         self.nodeId = nodeId
@@ -37,7 +36,6 @@ public struct LdapMappingTeam: Codable {
         self.permission = permission
         self.membersUrl = membersUrl
         self.repositoriesUrl = repositoriesUrl
-        self.parent = parent
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable { 
@@ -53,7 +51,6 @@ public struct LdapMappingTeam: Codable {
         case permission
         case membersUrl = "members_url"
         case repositoriesUrl = "repositories_url"
-        case parent
     }
 
 }
