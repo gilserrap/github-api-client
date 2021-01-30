@@ -53,21 +53,6 @@ public struct Integration: Codable {
         self.webhookSecret = webhookSecret
         self.pem = pem
     }
-    public var additionalProperties: [String:Any] = [:]
-
-    public subscript(key: String) -> Any? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -134,7 +119,6 @@ public struct Integration: Codable {
         nonAdditionalPropertyKeys.insert("client_secret")
         nonAdditionalPropertyKeys.insert("webhook_secret")
         nonAdditionalPropertyKeys.insert("pem")
-        additionalProperties = try container.decodeMap(Any.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 
 
