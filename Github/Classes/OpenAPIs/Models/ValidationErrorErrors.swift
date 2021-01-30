@@ -15,15 +15,13 @@ public struct ValidationErrorErrors: Codable {
     public var message: String?
     public var code: String
     public var index: Int?
-    public var value: OneOfstringintegerarray?
 
-    public init(resource: String? = nil, field: String? = nil, message: String? = nil, code: String, index: Int? = nil, value: OneOfstringintegerarray? = nil) {
+    public init(resource: String? = nil, field: String? = nil, message: String? = nil, code: String, index: Int? = nil) {
         self.resource = resource
         self.field = field
         self.message = message
         self.code = code
         self.index = index
-        self.value = value
     }
 
 }

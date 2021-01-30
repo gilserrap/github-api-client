@@ -998,32 +998,6 @@ open class ProjectsAPI {
     }
 
     /**
-     Move a project card
-     - POST /projects/columns/cards/{card_id}/moves
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/projects#move-a-project-card
-}
-     - parameter cardId: (path) card_id parameter 
-     - parameter inlineObject65: (body)  (optional)
-     - returns: RequestBuilder<Any> 
-     */
-    open class func projectsMoveCardWithRequestBuilder(cardId: Int, inlineObject65: InlineObject65? = nil) -> RequestBuilder<Any> {
-        var path = "/projects/columns/cards/{card_id}/moves"
-        let cardIdPreEscape = "\(APIHelper.mapValueToPathItem(cardId))"
-        let cardIdPostEscape = cardIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{card_id}", with: cardIdPostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: inlineObject65)
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<Any>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-
-    /**
      Move a project column
      
      - parameter columnId: (path) column_id parameter 
@@ -1040,32 +1014,6 @@ open class ProjectsAPI {
                 completion(nil, error)
             }
         }
-    }
-
-    /**
-     Move a project column
-     - POST /projects/columns/{column_id}/moves
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/projects#move-a-project-column
-}
-     - parameter columnId: (path) column_id parameter 
-     - parameter inlineObject67: (body)  (optional)
-     - returns: RequestBuilder<Any> 
-     */
-    open class func projectsMoveColumnWithRequestBuilder(columnId: Int, inlineObject67: InlineObject67? = nil) -> RequestBuilder<Any> {
-        var path = "/projects/columns/{column_id}/moves"
-        let columnIdPreEscape = "\(APIHelper.mapValueToPathItem(columnId))"
-        let columnIdPostEscape = columnIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{column_id}", with: columnIdPostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: inlineObject67)
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<Any>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**

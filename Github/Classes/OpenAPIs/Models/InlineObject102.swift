@@ -13,9 +13,9 @@ public struct InlineObject102: Codable {
     /** A custom webhook event name. */
     public var eventType: String
     /** JSON payload with extra information about the webhook event that your action or worklow may use. */
-    public var clientPayload: [String:Any]?
+    public var clientPayload: [String:String]?
 
-    public init(eventType: String, clientPayload: [String:Any]? = nil) {
+    public init(eventType: String, clientPayload: [String:String]? = nil) {
         self.eventType = eventType
         self.clientPayload = clientPayload
     }

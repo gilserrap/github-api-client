@@ -12,8 +12,6 @@ public struct ReactionRollup: Codable {
 
     public var url: String
     public var totalCount: Int
-    public var _1: Int
-    public var _1: Int
     public var laugh: Int
     public var confused: Int
     public var heart: Int
@@ -21,11 +19,9 @@ public struct ReactionRollup: Codable {
     public var eyes: Int
     public var rocket: Int
 
-    public init(url: String, totalCount: Int, _1: Int, _1: Int, laugh: Int, confused: Int, heart: Int, hooray: Int, eyes: Int, rocket: Int) {
+    public init(url: String, totalCount: Int, laugh: Int, confused: Int, heart: Int, hooray: Int, eyes: Int, rocket: Int) {
         self.url = url
         self.totalCount = totalCount
-        self._1 = _1
-        self._1 = _1
         self.laugh = laugh
         self.confused = confused
         self.heart = heart
@@ -37,8 +33,6 @@ public struct ReactionRollup: Codable {
     public enum CodingKeys: String, CodingKey, CaseIterable { 
         case url
         case totalCount = "total_count"
-        case _1 = "+1"
-        case _1 = "-1"
         case laugh
         case confused
         case heart

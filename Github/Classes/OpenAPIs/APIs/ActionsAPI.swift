@@ -575,7 +575,7 @@ open class ActionsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func actionsCreateWorkflowDispatch(owner: String, repo: String, workflowId: OneOfintegerstring, inlineObject74: InlineObject74? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func actionsCreateWorkflowDispatch(owner: String, repo: String, workflowId: String, inlineObject74: InlineObject74? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         actionsCreateWorkflowDispatchWithRequestBuilder(owner: owner, repo: repo, workflowId: workflowId, inlineObject74: inlineObject74).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -600,7 +600,7 @@ open class ActionsAPI {
      - parameter inlineObject74: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func actionsCreateWorkflowDispatchWithRequestBuilder(owner: String, repo: String, workflowId: OneOfintegerstring, inlineObject74: InlineObject74? = nil) -> RequestBuilder<Void> {
+    open class func actionsCreateWorkflowDispatchWithRequestBuilder(owner: String, repo: String, workflowId: String, inlineObject74: InlineObject74? = nil) -> RequestBuilder<Void> {
         var path = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
         let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
         let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1096,7 +1096,7 @@ open class ActionsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func actionsDisableWorkflow(owner: String, repo: String, workflowId: OneOfintegerstring, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func actionsDisableWorkflow(owner: String, repo: String, workflowId: String, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         actionsDisableWorkflowWithRequestBuilder(owner: owner, repo: repo, workflowId: workflowId).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -1120,7 +1120,7 @@ open class ActionsAPI {
      - parameter workflowId: (path) The ID of the workflow. You can also pass the workflow file name as a string. 
      - returns: RequestBuilder<Void> 
      */
-    open class func actionsDisableWorkflowWithRequestBuilder(owner: String, repo: String, workflowId: OneOfintegerstring) -> RequestBuilder<Void> {
+    open class func actionsDisableWorkflowWithRequestBuilder(owner: String, repo: String, workflowId: String) -> RequestBuilder<Void> {
         var path = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/disable"
         let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
         let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1366,7 +1366,7 @@ open class ActionsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func actionsEnableWorkflow(owner: String, repo: String, workflowId: OneOfintegerstring, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func actionsEnableWorkflow(owner: String, repo: String, workflowId: String, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
         actionsEnableWorkflowWithRequestBuilder(owner: owner, repo: repo, workflowId: workflowId).execute(apiResponseQueue) { result -> Void in
             switch result {
             case .success:
@@ -1390,7 +1390,7 @@ open class ActionsAPI {
      - parameter workflowId: (path) The ID of the workflow. You can also pass the workflow file name as a string. 
      - returns: RequestBuilder<Void> 
      */
-    open class func actionsEnableWorkflowWithRequestBuilder(owner: String, repo: String, workflowId: OneOfintegerstring) -> RequestBuilder<Void> {
+    open class func actionsEnableWorkflowWithRequestBuilder(owner: String, repo: String, workflowId: String) -> RequestBuilder<Void> {
         var path = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/enable"
         let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
         let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2062,7 +2062,7 @@ open class ActionsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func actionsGetWorkflow(owner: String, repo: String, workflowId: OneOfintegerstring, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Workflow?,_ error: Error?) -> Void)) {
+    open class func actionsGetWorkflow(owner: String, repo: String, workflowId: String, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: Workflow?,_ error: Error?) -> Void)) {
         actionsGetWorkflowWithRequestBuilder(owner: owner, repo: repo, workflowId: workflowId).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -2086,7 +2086,7 @@ open class ActionsAPI {
      - parameter workflowId: (path) The ID of the workflow. You can also pass the workflow file name as a string. 
      - returns: RequestBuilder<Workflow> 
      */
-    open class func actionsGetWorkflowWithRequestBuilder(owner: String, repo: String, workflowId: OneOfintegerstring) -> RequestBuilder<Workflow> {
+    open class func actionsGetWorkflowWithRequestBuilder(owner: String, repo: String, workflowId: String) -> RequestBuilder<Workflow> {
         var path = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}"
         let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
         let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -3013,7 +3013,7 @@ open class ActionsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func actionsListWorkflowRuns(owner: String, repo: String, workflowId: OneOfintegerstring, actor: String? = nil, branch: String? = nil, event: String? = nil, status: Status_actionsListWorkflowRuns? = nil, perPage: Int? = nil, page: Int? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: InlineResponse20013?,_ error: Error?) -> Void)) {
+    open class func actionsListWorkflowRuns(owner: String, repo: String, workflowId: String, actor: String? = nil, branch: String? = nil, event: String? = nil, status: Status_actionsListWorkflowRuns? = nil, perPage: Int? = nil, page: Int? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: InlineResponse20013?,_ error: Error?) -> Void)) {
         actionsListWorkflowRunsWithRequestBuilder(owner: owner, repo: repo, workflowId: workflowId, actor: actor, branch: branch, event: event, status: status, perPage: perPage, page: page).execute(apiResponseQueue) { result -> Void in
             switch result {
             case let .success(response):
@@ -3044,7 +3044,7 @@ open class ActionsAPI {
      - parameter page: (query) Page number of the results to fetch. (optional, default to 1)
      - returns: RequestBuilder<InlineResponse20013> 
      */
-    open class func actionsListWorkflowRunsWithRequestBuilder(owner: String, repo: String, workflowId: OneOfintegerstring, actor: String? = nil, branch: String? = nil, event: String? = nil, status: Status_actionsListWorkflowRuns? = nil, perPage: Int? = nil, page: Int? = nil) -> RequestBuilder<InlineResponse20013> {
+    open class func actionsListWorkflowRunsWithRequestBuilder(owner: String, repo: String, workflowId: String, actor: String? = nil, branch: String? = nil, event: String? = nil, status: Status_actionsListWorkflowRuns? = nil, perPage: Int? = nil, page: Int? = nil) -> RequestBuilder<InlineResponse20013> {
         var path = "/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
         let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
         let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

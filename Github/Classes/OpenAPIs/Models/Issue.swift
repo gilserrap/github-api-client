@@ -29,7 +29,7 @@ public struct Issue: Codable {
     public var body: String?
     public var user: SimpleUser?
     /** Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
-    public var labels: [OneOfstringobject]
+    public var labels: [String]
     public var assignee: SimpleUser?
     public var assignees: [SimpleUser]?
     public var milestone: Milestone?
@@ -49,7 +49,7 @@ public struct Issue: Codable {
     public var authorAssociation: AuthorAssociation
     public var reactions: ReactionRollup?
 
-    public init(id: Int, nodeId: String, url: String, repositoryUrl: String, labelsUrl: String, commentsUrl: String, eventsUrl: String, htmlUrl: String, number: Int, state: String, title: String, body: String? = nil, user: SimpleUser?, labels: [OneOfstringobject], assignee: SimpleUser?, assignees: [SimpleUser]? = nil, milestone: Milestone?, locked: Bool, activeLockReason: String? = nil, comments: Int, pullRequest: IssueSimplePullRequest? = nil, closedAt: Date?, createdAt: Date, updatedAt: Date, closedBy: SimpleUser? = nil, bodyHtml: String? = nil, bodyText: String? = nil, timelineUrl: String? = nil, repository: Repository? = nil, performedViaGithubApp: Integration? = nil, authorAssociation: AuthorAssociation, reactions: ReactionRollup? = nil) {
+    public init(id: Int, nodeId: String, url: String, repositoryUrl: String, labelsUrl: String, commentsUrl: String, eventsUrl: String, htmlUrl: String, number: Int, state: String, title: String, body: String? = nil, user: SimpleUser?, labels: [String], assignee: SimpleUser?, assignees: [SimpleUser]? = nil, milestone: Milestone?, locked: Bool, activeLockReason: String? = nil, comments: Int, pullRequest: IssueSimplePullRequest? = nil, closedAt: Date?, createdAt: Date, updatedAt: Date, closedBy: SimpleUser? = nil, bodyHtml: String? = nil, bodyText: String? = nil, timelineUrl: String? = nil, repository: Repository? = nil, performedViaGithubApp: Integration? = nil, authorAssociation: AuthorAssociation, reactions: ReactionRollup? = nil) {
         self.id = id
         self.nodeId = nodeId
         self.url = url

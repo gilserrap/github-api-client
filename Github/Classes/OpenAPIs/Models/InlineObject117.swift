@@ -15,20 +15,20 @@ public struct InlineObject117: Codable {
         case closed = "closed"
     }
     /** The title of the issue. */
-    public var title: OneOfstringinteger?
+    public var title: String?
     /** The contents of the issue. */
     public var body: String?
     /** Login for the user that this issue should be assigned to. **This field is deprecated.** */
     public var assignee: String?
     /** State of the issue. Either &#x60;open&#x60; or &#x60;closed&#x60;. */
     public var state: State?
-    public var milestone: OneOfstringinteger?
+    public var milestone: String?
     /** Labels to associate with this issue. Pass one or more Labels to _replace_ the set of Labels on this Issue. Send an empty array (&#x60;[]&#x60;) to clear all Labels from the Issue. _NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise._ */
-    public var labels: [OneOfstringobject]?
+    public var labels: [String]?
     /** Logins for Users to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this Issue. Send an empty array (&#x60;[]&#x60;) to clear all assignees from the Issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._ */
     public var assignees: [String]?
 
-    public init(title: OneOfstringinteger? = nil, body: String? = nil, assignee: String? = nil, state: State? = nil, milestone: OneOfstringinteger? = nil, labels: [OneOfstringobject]? = nil, assignees: [String]? = nil) {
+    public init(title: String? = nil, body: String? = nil, assignee: String? = nil, state: State? = nil, milestone: String? = nil, labels: [String]? = nil, assignees: [String]? = nil) {
         self.title = title
         self.body = body
         self.assignee = assignee

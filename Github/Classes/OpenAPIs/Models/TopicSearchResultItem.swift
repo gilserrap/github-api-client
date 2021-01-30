@@ -23,11 +23,11 @@ public struct TopicSearchResultItem: Codable {
     public var score: Int
     public var repositoryCount: Int?
     public var logoUrl: String?
-    public var textMatches: [Any]?
+    public var textMatches: [String]?
     public var related: [TopicSearchResultItemRelated]?
     public var aliases: [TopicSearchResultItemRelated]?
 
-    public init(name: String, displayName: String?, shortDescription: String?, description: String?, createdBy: String?, released: String?, createdAt: Date, updatedAt: Date, featured: Bool, curated: Bool, score: Int, repositoryCount: Int? = nil, logoUrl: String? = nil, textMatches: [Any]? = nil, related: [TopicSearchResultItemRelated]? = nil, aliases: [TopicSearchResultItemRelated]? = nil) {
+    public init(name: String, displayName: String?, shortDescription: String?, description: String?, createdBy: String?, released: String?, createdAt: Date, updatedAt: Date, featured: Bool, curated: Bool, score: Int, repositoryCount: Int? = nil, logoUrl: String? = nil, textMatches: [String]? = nil, related: [TopicSearchResultItemRelated]? = nil, aliases: [TopicSearchResultItemRelated]? = nil) {
         self.name = name
         self.displayName = displayName
         self.shortDescription = shortDescription

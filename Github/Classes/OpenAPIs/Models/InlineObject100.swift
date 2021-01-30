@@ -18,7 +18,6 @@ public struct InlineObject100: Codable {
     public var autoMerge: Bool? = true
     /** The [status](https://docs.github.com/enterprise-server@3.0/rest/reference/repos#statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts. */
     public var requiredContexts: [String]?
-    public var payload: OneOfmapstring?
     /** Name for the target deployment environment (e.g., &#x60;production&#x60;, &#x60;staging&#x60;, &#x60;qa&#x60;). */
     public var environment: String? = "production"
     /** Short description of the deployment. */
@@ -29,12 +28,11 @@ public struct InlineObject100: Codable {
     public var productionEnvironment: Bool?
     public var createdAt: String?
 
-    public init(ref: String, task: String? = "deploy", autoMerge: Bool? = true, requiredContexts: [String]? = nil, payload: OneOfmapstring? = nil, environment: String? = "production", description: String? = "", transientEnvironment: Bool? = false, productionEnvironment: Bool? = nil, createdAt: String? = nil) {
+    public init(ref: String, task: String? = "deploy", autoMerge: Bool? = true, requiredContexts: [String]? = nil, environment: String? = "production", description: String? = "", transientEnvironment: Bool? = false, productionEnvironment: Bool? = nil, createdAt: String? = nil) {
         self.ref = ref
         self.task = task
         self.autoMerge = autoMerge
         self.requiredContexts = requiredContexts
-        self.payload = payload
         self.environment = environment
         self.description = description
         self.transientEnvironment = transientEnvironment

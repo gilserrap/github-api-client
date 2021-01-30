@@ -40,12 +40,12 @@ public struct UserSearchResultItem: Codable {
     public var location: String?
     public var siteAdmin: Bool
     public var hireable: Bool?
-    public var textMatches: [Any]?
+    public var textMatches: [String]?
     public var blog: String?
     public var company: String?
     public var suspendedAt: Date?
 
-    public init(login: String, id: Int, nodeId: String, avatarUrl: String, gravatarId: String?, url: String, htmlUrl: String, followersUrl: String, subscriptionsUrl: String, organizationsUrl: String, reposUrl: String, receivedEventsUrl: String, type: String, score: Int, followingUrl: String, gistsUrl: String, starredUrl: String, eventsUrl: String, publicRepos: Int? = nil, publicGists: Int? = nil, followers: Int? = nil, following: Int? = nil, createdAt: Date? = nil, updatedAt: Date? = nil, name: String? = nil, bio: String? = nil, email: String? = nil, location: String? = nil, siteAdmin: Bool, hireable: Bool? = nil, textMatches: [Any]? = nil, blog: String? = nil, company: String? = nil, suspendedAt: Date? = nil) {
+    public init(login: String, id: Int, nodeId: String, avatarUrl: String, gravatarId: String?, url: String, htmlUrl: String, followersUrl: String, subscriptionsUrl: String, organizationsUrl: String, reposUrl: String, receivedEventsUrl: String, type: String, score: Int, followingUrl: String, gistsUrl: String, starredUrl: String, eventsUrl: String, publicRepos: Int? = nil, publicGists: Int? = nil, followers: Int? = nil, following: Int? = nil, createdAt: Date? = nil, updatedAt: Date? = nil, name: String? = nil, bio: String? = nil, email: String? = nil, location: String? = nil, siteAdmin: Bool, hireable: Bool? = nil, textMatches: [String]? = nil, blog: String? = nil, company: String? = nil, suspendedAt: Date? = nil) {
         self.login = login
         self.id = id
         self.nodeId = nodeId

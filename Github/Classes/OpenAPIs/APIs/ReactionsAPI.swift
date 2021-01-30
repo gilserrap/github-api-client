@@ -871,8 +871,8 @@ open class ReactionsAPI {
      * enum for parameter content
      */
     public enum Content_reactionsListForCommitComment: String, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"
@@ -951,8 +951,8 @@ open class ReactionsAPI {
      * enum for parameter content
      */
     public enum Content_reactionsListForIssue: String, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"
@@ -1031,8 +1031,8 @@ open class ReactionsAPI {
      * enum for parameter content
      */
     public enum Content_reactionsListForIssueComment: String, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"
@@ -1111,8 +1111,8 @@ open class ReactionsAPI {
      * enum for parameter content
      */
     public enum Content_reactionsListForPullRequestReviewComment: String, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"
@@ -1191,8 +1191,8 @@ open class ReactionsAPI {
      * enum for parameter content
      */
     public enum Content_reactionsListForTeamDiscussionCommentInOrg: String, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"
@@ -1276,8 +1276,8 @@ open class ReactionsAPI {
      * enum for parameter content
      */
     public enum Content_reactionsListForTeamDiscussionCommentLegacy: String, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"
@@ -1358,8 +1358,8 @@ open class ReactionsAPI {
      * enum for parameter content
      */
     public enum Content_reactionsListForTeamDiscussionInOrg: String, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"
@@ -1438,8 +1438,8 @@ open class ReactionsAPI {
      * enum for parameter content
      */
     public enum Content_reactionsListForTeamDiscussionLegacy: String, CaseIterable {
-        case +1 = "+1"
-        case 1 = "-1"
+        case plusOne = "+1"
+        case minusOne = "-1"
         case laugh = "laugh"
         case confused = "confused"
         case heart = "heart"

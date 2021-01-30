@@ -16,7 +16,6 @@ public struct Installation: Codable {
     }
     /** The ID of the installation. */
     public var id: Int
-    public var account: AnyOfsimpleUserenterprise?
     /** Describe whether all repositories have been selected or there&#39;s a selection involved */
     public var repositorySelection: RepositorySelection
     public var accessTokensUrl: String
@@ -38,9 +37,8 @@ public struct Installation: Codable {
     public var suspendedAt: Date?
     public var contactEmail: String?
 
-    public init(id: Int, account: AnyOfsimpleUserenterprise?, repositorySelection: RepositorySelection, accessTokensUrl: String, repositoriesUrl: String, htmlUrl: String, appId: Int, targetId: Int, targetType: String, permissions: InstallationPermissions, events: [String], createdAt: Date, updatedAt: Date, singleFileName: String?, hasMultipleSingleFiles: Bool? = nil, singleFilePaths: [String]? = nil, appSlug: String, suspendedBy: SimpleUser? = nil, suspendedAt: Date? = nil, contactEmail: String? = nil) {
+    public init(id: Int, repositorySelection: RepositorySelection, accessTokensUrl: String, repositoriesUrl: String, htmlUrl: String, appId: Int, targetId: Int, targetType: String, permissions: InstallationPermissions, events: [String], createdAt: Date, updatedAt: Date, singleFileName: String?, hasMultipleSingleFiles: Bool? = nil, singleFilePaths: [String]? = nil, appSlug: String, suspendedBy: SimpleUser? = nil, suspendedAt: Date? = nil, contactEmail: String? = nil) {
         self.id = id
-        self.account = account
         self.repositorySelection = repositorySelection
         self.accessTokensUrl = accessTokensUrl
         self.repositoriesUrl = repositoriesUrl

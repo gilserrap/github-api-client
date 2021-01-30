@@ -18,9 +18,9 @@ public struct LabelSearchResultItem: Codable {
     public var _default: Bool
     public var description: String?
     public var score: Int
-    public var textMatches: [Any]?
+    public var textMatches: [String]?
 
-    public init(id: Int, nodeId: String, url: String, name: String, color: String, _default: Bool, description: String?, score: Int, textMatches: [Any]? = nil) {
+    public init(id: Int, nodeId: String, url: String, name: String, color: String, _default: Bool, description: String?, score: Int, textMatches: [String]? = nil) {
         self.id = id
         self.nodeId = nodeId
         self.url = url

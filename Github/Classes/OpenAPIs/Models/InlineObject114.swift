@@ -11,18 +11,18 @@ import Foundation
 public struct InlineObject114: Codable {
 
     /** The title of the issue. */
-    public var title: OneOfstringinteger
+    public var title: String
     /** The contents of the issue. */
     public var body: String?
     /** Login for the user that this issue should be assigned to. _NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. **This field is deprecated.**_ */
     public var assignee: String?
-    public var milestone: OneOfstringinteger?
+    public var milestone: String?
     /** Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._ */
-    public var labels: [OneOfstringobject]?
+    public var labels: [String]?
     /** Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._ */
     public var assignees: [String]?
 
-    public init(title: OneOfstringinteger, body: String? = nil, assignee: String? = nil, milestone: OneOfstringinteger? = nil, labels: [OneOfstringobject]? = nil, assignees: [String]? = nil) {
+    public init(title: String, body: String? = nil, assignee: String? = nil, milestone: String? = nil, labels: [String]? = nil, assignees: [String]? = nil) {
         self.title = title
         self.body = body
         self.assignee = assignee

@@ -32,7 +32,7 @@ public struct IssueSearchResultItem: Codable {
     public var createdAt: Date
     public var updatedAt: Date
     public var closedAt: Date?
-    public var textMatches: [Any]?
+    public var textMatches: [String]?
     public var pullRequest: IssueSimplePullRequest?
     public var body: String?
     public var score: Int
@@ -44,7 +44,7 @@ public struct IssueSearchResultItem: Codable {
     public var timelineUrl: String?
     public var performedViaGithubApp: Integration?
 
-    public init(url: String, repositoryUrl: String, labelsUrl: String, commentsUrl: String, eventsUrl: String, htmlUrl: String, id: Int, nodeId: String, number: Int, title: String, locked: Bool, activeLockReason: String? = nil, assignees: [SimpleUser]? = nil, user: SimpleUser?, labels: [IssueSearchResultItemLabels], state: String, assignee: SimpleUser?, milestone: Milestone?, comments: Int, createdAt: Date, updatedAt: Date, closedAt: Date?, textMatches: [Any]? = nil, pullRequest: IssueSimplePullRequest? = nil, body: String? = nil, score: Int, authorAssociation: AuthorAssociation, draft: Bool? = nil, repository: Repository? = nil, bodyHtml: String? = nil, bodyText: String? = nil, timelineUrl: String? = nil, performedViaGithubApp: Integration? = nil) {
+    public init(url: String, repositoryUrl: String, labelsUrl: String, commentsUrl: String, eventsUrl: String, htmlUrl: String, id: Int, nodeId: String, number: Int, title: String, locked: Bool, activeLockReason: String? = nil, assignees: [SimpleUser]? = nil, user: SimpleUser?, labels: [IssueSearchResultItemLabels], state: String, assignee: SimpleUser?, milestone: Milestone?, comments: Int, createdAt: Date, updatedAt: Date, closedAt: Date?, textMatches: [String]? = nil, pullRequest: IssueSimplePullRequest? = nil, body: String? = nil, score: Int, authorAssociation: AuthorAssociation, draft: Bool? = nil, repository: Repository? = nil, bodyHtml: String? = nil, bodyText: String? = nil, timelineUrl: String? = nil, performedViaGithubApp: Integration? = nil) {
         self.url = url
         self.repositoryUrl = repositoryUrl
         self.labelsUrl = labelsUrl

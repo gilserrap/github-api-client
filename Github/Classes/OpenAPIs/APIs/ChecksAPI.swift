@@ -10,56 +10,6 @@ import Foundation
 
 
 open class ChecksAPI {
-    /**
-     Create a check run
-     
-     - parameter owner: (path)  
-     - parameter repo: (path)  
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func checksCreate(owner: String, repo: String, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: CheckRun?,_ error: Error?) -> Void)) {
-        checksCreateWithRequestBuilder(owner: owner, repo: repo, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Create a check run
-     - POST /repos/{owner}/{repo}/check-runs
-     - **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.  Creates a new check run for a specific commit in a repository. Your GitHub App must have the `checks:write` permission to create check runs.  In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these check runs exceed 1000, GitHub will start to automatically delete older check runs.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/checks#create-a-check-run
-}
-     - parameter owner: (path)  
-     - parameter repo: (path)  
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - returns: RequestBuilder<CheckRun> 
-     */
-    open class func checksCreateWithRequestBuilder(owner: String, repo: String, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<CheckRun> {
-        var path = "/repos/{owner}/{repo}/check-runs"
-        let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
-        let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{owner}", with: ownerPostEscape, options: .literal, range: nil)
-        let repoPreEscape = "\(APIHelper.mapValueToPathItem(repo))"
-        let repoPostEscape = repoPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{repo}", with: repoPostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: UNKNOWN_BASE_TYPE)
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<CheckRun>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
 
     /**
      Create a check suite
@@ -634,61 +584,4 @@ open class ChecksAPI {
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
-
-    /**
-     Update a check run
-     
-     - parameter owner: (path)  
-     - parameter repo: (path)  
-     - parameter checkRunId: (path) check_run_id parameter 
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func checksUpdate(owner: String, repo: String, checkRunId: Int, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil, apiResponseQueue: DispatchQueue = GithubAPI.apiResponseQueue, completion: @escaping ((_ data: CheckRun?,_ error: Error?) -> Void)) {
-        checksUpdateWithRequestBuilder(owner: owner, repo: repo, checkRunId: checkRunId, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     Update a check run
-     - PATCH /repos/{owner}/{repo}/check-runs/{check_run_id}
-     - **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.  Updates a check run for a specific commit in a repository. Your GitHub App must have the `checks:write` permission to edit check runs.
-     - externalDocs: class ExternalDocumentation {
-    description: API method documentation
-    url: https://docs.github.com/enterprise-server@3.0/rest/reference/checks#update-a-check-run
-}
-     - parameter owner: (path)  
-     - parameter repo: (path)  
-     - parameter checkRunId: (path) check_run_id parameter 
-     - parameter UNKNOWN_BASE_TYPE: (body)  (optional)
-     - returns: RequestBuilder<CheckRun> 
-     */
-    open class func checksUpdateWithRequestBuilder(owner: String, repo: String, checkRunId: Int, UNKNOWN_BASE_TYPE: UNKNOWN_BASE_TYPE? = nil) -> RequestBuilder<CheckRun> {
-        var path = "/repos/{owner}/{repo}/check-runs/{check_run_id}"
-        let ownerPreEscape = "\(APIHelper.mapValueToPathItem(owner))"
-        let ownerPostEscape = ownerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{owner}", with: ownerPostEscape, options: .literal, range: nil)
-        let repoPreEscape = "\(APIHelper.mapValueToPathItem(repo))"
-        let repoPostEscape = repoPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{repo}", with: repoPostEscape, options: .literal, range: nil)
-        let checkRunIdPreEscape = "\(APIHelper.mapValueToPathItem(checkRunId))"
-        let checkRunIdPostEscape = checkRunIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{check_run_id}", with: checkRunIdPostEscape, options: .literal, range: nil)
-        let URLString = GithubAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: UNKNOWN_BASE_TYPE)
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<CheckRun>.Type = GithubAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-
 }

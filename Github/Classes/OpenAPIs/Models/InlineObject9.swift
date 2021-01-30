@@ -15,15 +15,15 @@ public struct InlineObject9: Codable {
     /** The script that the hook runs. */
     public var script: String?
     /** The GitHub repository where the script is kept. */
-    public var scriptRepository: [String:Any]?
+    public var scriptRepository: [String:String]?
     /** The pre-receive environment where the script is executed. */
-    public var environment: [String:Any]?
+    public var environment: [String:String]?
     /** The state of enforcement for this hook. */
     public var enforcement: String?
     /** Whether enforcement can be overridden at the org or repo level. */
     public var allowDownstreamConfiguration: Bool?
 
-    public init(name: String? = nil, script: String? = nil, scriptRepository: [String:Any]? = nil, environment: [String:Any]? = nil, enforcement: String? = nil, allowDownstreamConfiguration: Bool? = nil) {
+    public init(name: String? = nil, script: String? = nil, scriptRepository: [String:String]? = nil, environment: [String:String]? = nil, enforcement: String? = nil, allowDownstreamConfiguration: Bool? = nil) {
         self.name = name
         self.script = script
         self.scriptRepository = scriptRepository
